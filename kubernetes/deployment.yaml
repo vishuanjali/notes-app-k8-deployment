@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jangoapp-deployment
+  labels:
+    app: notes-app
+  namespace: jangoapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+    spec:
+      containers:
+      - name: note-cont
+        image: anjalir17/jango-app:latest
+        ports:
+        - containerPort: 8000
+
